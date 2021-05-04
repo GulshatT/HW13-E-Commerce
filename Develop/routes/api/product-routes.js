@@ -11,8 +11,10 @@ router.get('/', async (req, res) => {
     const allProduct = await Product.findAll({
       include: [{ model: Category, as: "category"}, {model: Tag, as: "tags"}]
     });
+    console.log(allProduct)
     res.status(200).json(allProduct);
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
   
@@ -128,7 +130,7 @@ router.put('/:id', (req, res) => {
         return;
       }
   
-      res.status(200).json(travellerData);
+      res.status(200).json(allProduct);
     } catch (err) {
       res.status(500).json(err);
     }
